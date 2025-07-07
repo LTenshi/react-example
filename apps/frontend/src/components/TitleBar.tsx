@@ -6,7 +6,7 @@ export default function TitleBar() {
   const others = ["Next.js", "Nest.js", "Turbo"]
   const [activeIndex, setActiveIndex] = useState(0);
 
-  //Purely here to showcase useEffect use
+  // Purely here to showcase useEffect use
   useEffect(() => {
     const interval = setInterval(() => {
       if (activeIndex > others.length - 2) {
