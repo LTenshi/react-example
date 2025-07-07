@@ -1,0 +1,25 @@
+:root {
+  --main: black;
+  --secondary: white;
+  --highlight: goldenrod;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main: white;
+    --secondary: black;
+  }
+}
+
+.blink {
+  animation: 3s infinite blink-keyframes
+}
+
+@keyframes blink-keyframes {
+  25%, 75% {
+    color: var(--main)
+  }
+  50% {
+    color: var(--highlight)
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import UiBox from "@/components/UiBox";
+import cssTools from "@/css/tools.module.css"
 
 export default function TitleBar() {
   const others = ["Next.js", "Nest.js", "Turbo"]
@@ -24,7 +25,7 @@ export default function TitleBar() {
         <div className="p-2 text-xl font-medium text-black dark:text-white">Welcome to my React ({others[activeIndex]}) app!</div>
       </UiBox>
       <UiBox className="flex-1/2">
-        <div className="p-2 text-xl font-medium text-black dark:text-white">At the moment it showcases I <a className="blink">can</a> work with React</div>
+        <div className="p-2 text-xl font-medium text-black dark:text-white">At the moment it showcases I <a className={cssTools.blink}>can</a> work with React</div>
       </UiBox>
     </div>
   )
