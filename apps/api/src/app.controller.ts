@@ -1,20 +1,20 @@
-import { Req, Controller, Get, Post, Body, RawBodyRequest } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 
 export class ExampleDTO {
-  example: string
+  example: string;
 }
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("/example")
+  @Get('/example')
   getExample(): string {
     return this.appService.getExampleText();
   }
 
-  @Post("/example")
+  @Post('/example')
   postExample(@Body() body: ExampleDTO): string {
     return this.appService.postExampleText(body.example);
   }

@@ -15,7 +15,7 @@ export default function Home() {
           <ApiExample></ApiExample>
         </div>
       </main>
-      <footer>
+      <footer className="text-right pr-3">
         Made by Lukasz Pawlak
       </footer>
     </div>
