@@ -39,8 +39,12 @@ React/Next.js \
 🟢 Basics - Basic Component \
 🟢 Basics - Slotted Component \
 🟢 Basics - CSS Classes and Loading \
+🟢 Basics - Memos \
+🟢 Basics - Conditional Rendering \
+🔴 Basics - Loop Rendering \
 🟢 API Usage - Get \
 🟢 API Usage - Post \
+🟢 API Usage - Centralised API Module \
 🔴 Routing - Another Page \
 🔴 Testing - Basic Cypress Test \
 🔴 Testing - API Cypress Test
@@ -49,6 +53,7 @@ Nest.Js \
 🟢 Basics - Project Setup \
 🟢 Basics - Simple GET Endpoint \
 🟢 Basics - Simple POST Endpoint \
+🔴 Basics - More Advanced GET Endpoint with JSON return \
 🔴 Basics - File I/O \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
 🔴 Later - API Root Splash \
