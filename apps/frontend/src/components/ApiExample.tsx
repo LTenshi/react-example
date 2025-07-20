@@ -63,12 +63,15 @@ export default function ApiExample() {
   return (
     <UiBox className="mt-2">
       <div className="p-2">
+        <h3>Simple API Endpoints</h3>
         <div>
-          Here&apos;s a very simple get setup:
+          Here&apos;s a very simple get endpoint call:
+          <h6>It is fetching data from the API GET <a target="_blank" href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example"}>/example</a> endpoint</h6>
         </div>
         <GetExample server={nestServer}></GetExample>
-        <div className="pt-3">
-          Here&apos;s a very simple post setup (note that this function is artificially delayed by a second to simulate slow response):
+        <div>
+          Here&apos;s a very simple post setup 
+          <h6>It is posting data to the API POST <a>/example</a> endpoint (note that this function is artificially delayed by a second to simulate slow response)</h6>
         </div>
         <PostExample server={nestServer}></PostExample>
       </div>
