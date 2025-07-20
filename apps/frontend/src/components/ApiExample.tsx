@@ -6,7 +6,7 @@ import UiBox from "./UiBox";
 import FallbackSimple from "./FallbackSimple";
 
 export function GetExample(props: {server: nestServerModule}) {
-  const [exampleOutput, setExampleOutput] = useState("");
+  const [exampleOutput, setExampleOutput] = useState<string>();
   const [isLoading, setIsLoading] = useState(false)
 
   async function getExample() {
@@ -31,8 +31,8 @@ export function GetExample(props: {server: nestServerModule}) {
 }
 
 export function PostExample(props: {server: nestServerModule}) {
-  const [postExampleData, setPostExampleData] = useState("");
-  const [postExampleDataReturn, setPostExampleDataReturn] = useState("")
+  const [postExampleData, setPostExampleData] = useState<string>("");
+  const [postExampleDataReturn, setPostExampleDataReturn] = useState<string>()
   const [isLoading, setIsLoading] = useState(false)
 
   async function postExample() {
