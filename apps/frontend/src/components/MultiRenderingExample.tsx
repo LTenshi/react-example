@@ -45,7 +45,7 @@ export function ExampleContainer(props: {server: nestServerModule}) {
   return (
     <>
       <h4>A list of some submarine movies</h4>
-      <h6>The data for these is fetched from the API GET <a href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example/array-object"}>/example/array-object endpoint</a></h6>
+      <h6>The data for these is fetched from the API GET <a href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example/array-object"}>/example/array-object</a> endpoint</h6>
       {isLoading  && <FallbackSimple />}
       {!isLoading && 
       <div className="grid md:grid-cols-2 lg:grid-cols-4">
