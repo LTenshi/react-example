@@ -20,11 +20,11 @@ export default function TitleBar() {
   })
 
   return (
-    <div className="flex">
-      <UiBox className="mr-2 flex-1/2">
+    <div className="grid lg:grid-cols-2 gap-2">
+      <UiBox>
         <div className="p-2 text-xl font-medium text-black dark:text-white">Welcome to my React ({others[activeIndex]}) app!</div>
       </UiBox>
-      <UiBox className="flex-1/2">
+      <UiBox>
         <div className="p-2 text-xl font-medium text-black dark:text-white">At the moment it showcases I <a className={cssTools.blink}>can</a> work with React</div>
       </UiBox>
     </div>

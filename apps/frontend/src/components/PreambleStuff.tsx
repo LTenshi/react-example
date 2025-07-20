@@ -10,7 +10,7 @@ export function PreambleStuff() {
           </h3>
           <div>
             Hi! Thanks for browsing my github, and this react example specifically.<br/>
-            I hope the setup wasn&apos;t too hard, I do in fact realise that changing this from bun to npm/pnpm/yarn is not as seamless as I&apos;d like it to be.
+            If you are reading this then setup worked, which is good.
             <br/>
             <br/>
             Here&apos;s some basic information about this page:
