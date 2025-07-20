@@ -5,23 +5,27 @@ This repository is meant to showcase my ability to pivot and work with React bas
 It will be updated over time with new examples. Check the bottom of this readme for a list.
 
 # How to run
-Clone the repository and install with the package manager of your choice.\
-I used [Bun](https://bun.sh), but in theory you should be able to use NPM, PNPM and Yarn with some minor warnings on initial install.
 
-Step one:\
+### Note for developers or individuals familiar with development
+I used [Bun](https://bun.sh) during development and opted to have NPM as a default, but in theory if you know what you are doing you should be able to use PNPM and Yarn with some minor tweaking of the package.json packageManager field.
+
+## Step one:
 Clone the repository to the folder of your choice
 
-Step two:\
-Use any of the following commands depending on the package manager of your choice. (Bun was used in development so it will work out of the gate).
+## Step two:
+⚠ If you plan to stick with NPM for simplicity, skip this step ⚠\
+\
+If you'd like to run Bun, rename package.json to package.json.disabled and package.json.disabled2 to package.json.
+
+## Step three:
+Use any of the following commands depending on the package manager of your choice..
 ><b>npm i</b>\
-pnpm i\
 bun i
 
 Once the installation was finished
 
-Step 3:
+## Step four:
 >npm run dev\
-pnpm run dev\
 bun run dev
 
 The application should then be hosted on the following two adresses
@@ -41,7 +45,7 @@ React/Next.js \
 🟢 Basics - CSS Classes and Loading \
 🟢 Basics - Memos \
 🟢 Basics - Conditional Rendering \
-🔴 Basics - Loop Rendering \
+🟢 Basics - Loop Rendering \
 🟢 API Usage - Get \
 🟢 API Usage - Post \
 🟢 API Usage - Centralised API Module \
@@ -53,7 +57,7 @@ Nest.Js \
 🟢 Basics - Project Setup \
 🟢 Basics - Simple GET Endpoint \
 🟢 Basics - Simple POST Endpoint \
-🔴 Basics - More Advanced GET Endpoint with JSON return \
+🟢 Basics - More Advanced GET Endpoint with JSON return \
 🔴 Basics - File I/O \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
 🔴 Later - API Root Splash \
