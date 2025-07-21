@@ -32,8 +32,9 @@ export default function FormExample() {
       <div className="p-2">
         <h3>Form Submitting Example</h3>
         <div>Here&apos;s a form to submit your own movie to the list above</div>
+        <h6>The data will be sent to the API POST <a>/example/post-movie-object</a> endpoint</h6>
         <form method="post" onSubmit={handleFormSubmit}>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             <InputWrapper inputTitle="Movie Name">
               <input className="w-full" name="title" type="text" placeholder="Lord of the Ri..." required></input>
             </InputWrapper>

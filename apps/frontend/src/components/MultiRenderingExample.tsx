@@ -59,7 +59,7 @@ export function ExampleContainer(props: {server: nestServerModule}) {
       <h6>The data for these is fetched from the API GET <a href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example/array-object"}>/example/array-object</a> endpoint</h6>
       {isLoadingMultiLoading  && <FallbackSimple />}
       {!isLoadingMultiLoading && 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-2 p-2">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-2">
           { exampleBoxArray }
       </div>
       }
