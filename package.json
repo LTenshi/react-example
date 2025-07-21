@@ -27,6 +27,9 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
+    "date-fns": "^4.1.0",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.11"
   }

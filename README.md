@@ -46,6 +46,8 @@ React/Next.js \
 🟢 Basics - Memos \
 🟢 Basics - Conditional Rendering \
 🟢 Basics - Loop Rendering \
+🟢 Advanced - Use of Forms \
+🟢 Advanced - Use of Contexts \
 🟢 API Usage - Get \
 🟢 API Usage - Post \
 🟢 API Usage - Centralised API Module \
@@ -58,6 +60,9 @@ Nest.Js \
 🟢 Basics - Simple GET Endpoint \
 🟢 Basics - Simple POST Endpoint \
 🟢 Basics - More Advanced GET Endpoint with JSON return \
+🟢 Basics - Validation of incoming Data \
+🟢 Basics - Validation Pipes \
+🟢 Basics - Using temproary local variable as storage \
 🔴 Basics - File I/O \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
 🔴 Later - API Root Splash \

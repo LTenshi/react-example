@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ExampleObjectDTO } from 'classes/ExampleObjectArrayDTO';
+import { ExampleObjectDTO } from 'classes/ExampleObjectDTO';
 
 export class ExampleDTO {
   example: string;
@@ -23,5 +23,10 @@ export class AppController {
   @Get('/example/array-object')
   getExampleArray(): ExampleObjectDTO[] {
     return this.appService.getExampleArrayObject();
+  }
+
+  @Post('/example/post-movie-object')
+  postMovieObject(@Body() body: ExampleObjectDTO): void {
+    this.appService.postMovieExample(body);
   }
 }

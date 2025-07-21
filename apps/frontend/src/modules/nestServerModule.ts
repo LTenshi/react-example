@@ -1,4 +1,4 @@
-import { ExampleObjectDTO } from "@/classes/ExampleObjectArrayDTO"
+import { ExampleObjectDTO } from "@/classes/ExampleObjectDTO"
 
 export default class nestServerModule {
   public async getExample(signal?: AbortSignal): Promise<string> {
@@ -41,6 +41,23 @@ export default class nestServerModule {
     })
     .then((res) => {
       return res.text()
+    });
+  }
+
+  public async postMovie(dataIn: ExampleObjectDTO, signal?: AbortSignal): Promise<boolean> {
+    return await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + "example/post-movie-object", {
+      method: "POST",
+      body: JSON.stringify(dataIn),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      signal: signal
+    })
+    .catch((err) => {
+      throw new Error(err)
+    })
+    .then(() => {
+      return true;
     });
   }
 }

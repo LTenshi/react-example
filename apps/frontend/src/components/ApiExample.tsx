@@ -5,6 +5,29 @@ import nestServerModule from "@/modules/nestServerModule";
 import UiBox from "./UiBox";
 import FallbackSimple from "./FallbackSimple";
 
+export default function ApiExample() {
+  // useMemo to make an instance and not recreate it everytime it re-renders
+  const nestServer = useMemo(() => new nestServerModule(), [])
+
+  return (
+    <UiBox className="mt-2">
+      <div className="p-2">
+        <h3>Simple API Endpoints</h3>
+        <div>
+          Here&apos;s a very simple get endpoint call:
+          <h6>It is fetching data from the API GET <a target="_blank" href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example"}>/example</a> endpoint</h6>
+        </div>
+        <GetExample server={nestServer}></GetExample>
+        <div>
+          Here&apos;s a very simple post setup 
+          <h6>It is posting data to the API POST <a>/example</a> endpoint (note that this function is artificially delayed by a second to simulate slow response)</h6>
+        </div>
+        <PostExample server={nestServer}></PostExample>
+      </div>
+    </UiBox>
+  )
+}
+
 export function GetExample(props: {server: nestServerModule}) {
   const [exampleOutput, setExampleOutput] = useState<string>();
   const [isLoading, setIsLoading] = useState(false)
@@ -44,7 +67,7 @@ export function PostExample(props: {server: nestServerModule}) {
   }
   return (
     <>
-      <input className="bg-white/10 mr-2" name="postExampleInput" placeholder="Enter text here!" onChange={event => setPostExampleData(event.target.value)}></input>
+      <input className="mr-2" name="postExampleInput" placeholder="Enter text here!" onChange={event => setPostExampleData(event.target.value)}></input>
       <button
         className="bg-white/10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
         onClick={postExample}>
@@ -56,25 +79,3 @@ export function PostExample(props: {server: nestServerModule}) {
   )
 }
 
-export default function ApiExample() {
-  // useMemo to make an instance and not recreate it everytime it re-renders
-  const nestServer = useMemo(() => new nestServerModule(), [])
-
-  return (
-    <UiBox className="mt-2">
-      <div className="p-2">
-        <h3>Simple API Endpoints</h3>
-        <div>
-          Here&apos;s a very simple get endpoint call:
-          <h6>It is fetching data from the API GET <a target="_blank" href={process.env.NEXT_PUBLIC_API_ENDPOINT + "example"}>/example</a> endpoint</h6>
-        </div>
-        <GetExample server={nestServer}></GetExample>
-        <div>
-          Here&apos;s a very simple post setup 
-          <h6>It is posting data to the API POST <a>/example</a> endpoint (note that this function is artificially delayed by a second to simulate slow response)</h6>
-        </div>
-        <PostExample server={nestServer}></PostExample>
-      </div>
-    </UiBox>
-  )
-}
