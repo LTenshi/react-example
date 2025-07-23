@@ -10,6 +10,11 @@ export class ExampleDTO {
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get('/')
+  getDefault(): string {
+    return 'You are on the API address right now! You are probably looking for one port number down (3000 hopefully)';
+  }
+
   @Get('/example')
   getExample(): string {
     return this.appService.getExampleText();

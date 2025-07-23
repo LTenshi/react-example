@@ -1,7 +1,9 @@
 import { ExampleObjectDTO } from "@/classes/ExampleObjectDTO"
 
 export default class nestServerModule {
-  public async getExample(signal?: AbortSignal): Promise<string> {
+  public async getExample(): Promise<string> {
+    const controller = new AbortController();
+    const { signal } = controller;
     return await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + "example", {
       method: "GET",
       signal: signal
@@ -14,7 +16,9 @@ export default class nestServerModule {
     })
   }
 
-  public async getArrayObjectExample(signal?: AbortSignal): Promise<ExampleObjectDTO[]> {
+  public async getArrayObjectExample(): Promise<ExampleObjectDTO[]> {
+    const controller = new AbortController();
+    const { signal } = controller;
     return await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + "example/array-object", {
       method: "GET",
       signal: signal
@@ -27,7 +31,9 @@ export default class nestServerModule {
     })
   }
 
-  public async postExample( dataIn: string, signal?: AbortSignal,): Promise<string> {
+  public async postExample( dataIn: string): Promise<string> {
+    const controller = new AbortController();
+    const { signal } = controller;
     return await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + "example", {
       method: "POST",
       body: JSON.stringify({ example: dataIn }),
@@ -44,7 +50,9 @@ export default class nestServerModule {
     });
   }
 
-  public async postMovie(dataIn: ExampleObjectDTO, signal?: AbortSignal): Promise<boolean> {
+  public async postMovie(dataIn: ExampleObjectDTO): Promise<boolean> {
+    const controller = new AbortController();
+    const { signal } = controller;
     return await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT + "example/post-movie-object", {
       method: "POST",
       body: JSON.stringify(dataIn),

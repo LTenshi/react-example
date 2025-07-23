@@ -34,17 +34,14 @@ export function ExampleContainer(props: {server: nestServerModule}) {
   
   useEffect( () => { 
     //AbortController pattern to avoid abort race conditions
-    const controller = new AbortController(); 
-    const signal = controller.signal;
     
     async function getExampleData() {
       setIsMultiLoading(true)
-      setExampleList(await props.server.getArrayObjectExample(signal))
+      setExampleList(await props.server.getArrayObjectExample())
       setIsMultiLoading(false)
     }
     getExampleData();
 
-    return () => controller.abort("Failed");
   }, [])
   
   const exampleBoxArray = exampleList.map((item, index) => 
