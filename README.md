@@ -51,7 +51,7 @@ React/Next.js \
 🟢 API Usage - Get \
 🟢 API Usage - Post \
 🟢 API Usage - Centralised API Module \
-🔴 Routing - Another Page \
+🟢 Routing - Another Page \
 🔴 Testing - Basic Cypress Test \
 🔴 Testing - API Cypress Test
 
@@ -65,5 +65,5 @@ Nest.Js \
 🟢 Basics - Using temproary local variable as storage \
 🔴 Basics - File I/O \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
-🔴 Later - API Root Splash \
+🟢 Later - API Root Splash \
 🔴 Later - API Swagger (API documentation) \

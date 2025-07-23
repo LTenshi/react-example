@@ -1,3 +1,4 @@
+import Link from "next/link";
 import UiBox from "./UiBox";
 
 export function PreambleStuff() {
@@ -19,6 +20,7 @@ export function PreambleStuff() {
               <li>Any link on this page appears in glorious <a>goldenrod</a></li>
               <li>Every section has a header and every subitem has prupose explained in the following style: <h6>There will be some information and maybe even an endpoint <a target="_blank" href="https://en.wikipedia.org/wiki/Solidago">/this/is/a/fake/endpoint</a> some GET endpoints might even be clickable</h6></li>
             </ul>
+            <div className="justify-self-center">Click <Link href="/examples">here</Link> to check out the examples</div>
           </div>
         </div>
       </UiBox>
