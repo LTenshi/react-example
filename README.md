@@ -13,6 +13,8 @@ Clone the repository to the folder of your choice
 Go into the directory, open command line/open the folder as project in vscode and run:
 > npm i
 
+You may see an installation prompt from playwright, if you are keen to see the tests running, please accept whatever it asks for. Otherwise you can see the last test resutl from the playwright-report folder inside of the apps/frontend/playwright-folder and open it in the browser of your choice. 
+
 ## Step three:
 Once the installation is finished
 >npm run dev
