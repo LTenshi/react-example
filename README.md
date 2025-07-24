@@ -52,8 +52,8 @@ React/Next.js \
 🟢 API Usage - Post \
 🟢 API Usage - Centralised API Module \
 🟢 Routing - Another Page \
-🔴 Testing - Basic Cypress Test \
-🔴 Testing - API Cypress Test
+🟢 Testing - Basic E2E Test \
+🟢 Testing - API E2E Test
 
 Nest.Js \
 🟢 Basics - Project Setup \
