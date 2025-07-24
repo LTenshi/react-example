@@ -42,7 +42,8 @@ export function GetExample(props: {server: nestServerModule}) {
     <>
       <div>
           <button 
-            className="bg-white/10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+            data-testid="btn-get-example"
+            className="font-bold py-2 px-4 rounded" 
             onClick={getExample}>
               Press me!
           </button>
@@ -67,9 +68,10 @@ export function PostExample(props: {server: nestServerModule}) {
   }
   return (
     <>
-      <input className="mr-2" name="postExampleInput" placeholder="Enter text here!" onChange={event => setPostExampleData(event.target.value)}></input>
+      <input data-testid="input-post-example" className="mr-2" name="postExampleInput" placeholder="Enter text here!" onChange={event => setPostExampleData(event.target.value)}></input>
       <button
-        className="bg-white/10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" 
+        data-testid="btn-post-example"
+        className="font-bold py-2 px-4 rounded" 
         onClick={postExample}>
           Press me!
       </button>

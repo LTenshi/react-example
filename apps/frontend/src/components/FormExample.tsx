@@ -36,19 +36,19 @@ export default function FormExample() {
         <form method="post" onSubmit={handleFormSubmit}>
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
             <InputWrapper inputTitle="Movie Name">
-              <input className="w-full" name="title" type="text" placeholder="Lord of the Ri..." required></input>
+              <input data-testid="input-form-title" className="w-full" name="title" type="text" placeholder="Lord of the Ri..." required></input>
             </InputWrapper>
             <InputWrapper inputTitle="Description">
-              <textarea className="w-full" name="description" rows="5" placeholder="A movie about a fellowship of..." required></textarea >
+              <textarea data-testid="textarea-form-description" className="w-full" name="description" rows="5" placeholder="A movie about a fellowship of..." required></textarea >
             </InputWrapper>
             <InputWrapper inputTitle="Rating (out of 10)">
-              <input className="w-full" name="rating" type="number" min="0" max="10" required></input>
+              <input data-testid="input-form-rating" className="w-full" name="rating" type="number" min="0" max="10" required></input>
             </InputWrapper>
             <InputWrapper inputTitle="Date added">
-              <input className="w-full" name="dateAdded" type="date"></input>
+              <input data-testid="input-form-date-added" className="w-full" name="dateAdded" type="date"></input>
             </InputWrapper>
           </div>
-          <button type="submit" className="mt-2 bg-white/10 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit form</button>
+          <button data-testid="submit-form-example" type="submit" className="mt-2 font-bold py-2 px-4 rounded">Submit form</button>
         </form>
       </div>
     </UiBox>

@@ -45,7 +45,7 @@ export function ExampleContainer(props: {server: nestServerModule}) {
   }, [])
   
   const exampleBoxArray = exampleList.map((item, index) => 
-    <div key={index}>
+    <div key={index} data-testid={`movie-${index}`}>
       <ExampleBox exampleObject={item} ></ExampleBox>
     </div>
   )
