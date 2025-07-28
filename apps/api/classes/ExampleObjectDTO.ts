@@ -1,5 +1,6 @@
 //I am duplicating this in the client.
 
+import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 //I should maybe create a class project?
@@ -16,18 +17,22 @@ export class ExampleObjectDTO {
     this.dateAdded = _dateAdded;
   }
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   title: string;
 
+  @ApiProperty()
   @IsString()
   @IsNotEmpty()
   description: string;
 
+  @ApiProperty()
   @IsNumber()
   @IsNotEmpty()
   rating: number;
 
+  @ApiProperty()
   @IsNotEmpty()
   @IsDateString()
   dateAdded: Date;

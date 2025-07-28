@@ -22,7 +22,8 @@ Once the installation is finished
 The application should then be hosted on the following two adresses
 
 http://localhost:3000 - Client\
-http://localhost:3001 - API
+http://localhost:3001 - API\
+http://localhost:3001/api-docs - Swagger API Docs
 
 # Roadmap
 
@@ -57,4 +58,4 @@ Nest.Js \
 🔴 Basics - File I/O \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
 🟢 Later - API Root Splash \
-🔴 Later - API Swagger (API documentation) \
+🟢 Later - API Swagger (API documentation) \
