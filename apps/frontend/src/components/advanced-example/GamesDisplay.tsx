@@ -17,7 +17,6 @@ export function GameBox(props: {
   const [reviewList, setReviewList] = useState<DisplayReviewDTO[]>([]);
   const intialised = useRef(false);
 
-  // FIXME: This is called twice, presumably because it's rendering twice
   useEffect(() => {
     async function getExampleData() {
       setReviewList(await props.server.getReviews(props.gameObject.ID));
