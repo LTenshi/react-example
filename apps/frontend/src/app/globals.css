@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   h1 {
@@ -21,16 +21,19 @@
     filter: brightness(75%);
   }
 
-  input, textarea {
+  input,
+  textarea {
     padding: 7px;
     border-radius: 5px;
   }
 
-  a { color: goldenrod}
+  a {
+    color: goldenrod;
+  }
 
   a:hover {
     text-decoration: inherit;
-    color: gold
+    color: gold;
   }
 
   button:hover {
@@ -38,8 +41,9 @@
   }
 
   @media (prefers-color-scheme: dark) {
-    input, textarea {
-      background-color: rgba(255,255,255, 0.1);
+    input,
+    textarea {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     button {
@@ -55,7 +59,8 @@
   }
 
   @media (prefers-color-scheme: light) {
-    input, textarea {
+    input,
+    textarea {
       background-color: rgba(0, 0, 0, 0.1);
     }
 

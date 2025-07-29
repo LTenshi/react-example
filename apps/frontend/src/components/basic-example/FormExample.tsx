@@ -67,7 +67,7 @@ export default function FormExample() {
                 data-testid="textarea-form-description"
                 className="w-full"
                 name="description"
-                rows="5"
+                rows={5}
                 placeholder="A movie about a fellowship of..."
                 required
               ></textarea>

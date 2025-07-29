@@ -1,6 +1,6 @@
-'use client'
-import AppWrapper from "@/components/generic/AppWrapper";
-import { PreambleStuff } from "@/components/PreambleStuff";
+'use client';
+import AppWrapper from '@/components/generic/AppWrapper';
+import { PreambleStuff } from '@/components/PreambleStuff';
 
 export default function Home() {
   return (
@@ -9,3 +9,4 @@ export default function Home() {
     </AppWrapper>
   );
 }
+
