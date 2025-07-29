@@ -1,21 +1,37 @@
-// import { createContext, useContext } from "react";
+import { VideoGameDTO } from '@/classes/VideoGameDTOs';
+import { createContext, useContext, useState } from 'react';
 
-// export type MultiRenderingContext = {}
+export type AdvancedVideoGameContext = {
+  videoGameList: VideoGameDTO[];
+  isVideoGameListLoading: boolean;
+  setVideoGameList: (val: VideoGameDTO[]) => void;
+  setIsVideoGameListLoading: (val: boolean) => void;
+};
 
-// const MultiRenderingContext = createContext<MultiRenderingContext | null>(null);
+const AdvancedVideoGameContext = createContext<AdvancedVideoGameContext | null>(
+  null,
+);
 
-// export function useMultiRenderingContext() {
-//   return useContext(MultiRenderingContext)
-// }
+export function useAdvancedVideoGameContext() {
+  return useContext(AdvancedVideoGameContext);
+}
 
-export function AdvancedVideoGameContext(props: {
+export function AdvancedVideoGameContextProvider(props: {
   children: React.ReactElement | React.ReactElement[];
 }) {
-  // const value = {
-  // }
+  const [videoGameList, setVideoGameList] = useState<VideoGameDTO[]>([]);
+  const [isVideoGameListLoading, setIsVideoGameListLoading] = useState(false);
+
+  const value = {
+    videoGameList,
+    isVideoGameListLoading,
+    setVideoGameList,
+    setIsVideoGameListLoading,
+  };
 
   return (
-    <>{props.children}</>
-    // <MultiRenderingContext.Provider value={value}>{props.children}</MultiRenderingContext.Provider>
+    <AdvancedVideoGameContext.Provider value={value}>
+      {props.children}
+    </AdvancedVideoGameContext.Provider>
   );
 }

@@ -7,17 +7,22 @@ It will be updated over time with new examples. Check the bottom of this readme 
 # How to run
 
 ## Step one:
+
 Clone the repository to the folder of your choice
 
 ## Step two:
+
 Go into the directory, open command line/open the folder as project in vscode and run:
+
 > npm i
 
-You may see an installation prompt from playwright, if you are keen to see the tests running, please accept whatever it asks for. Otherwise you can see the last test result from the playwright-report folder inside of the apps/frontend/playwright-folder and open it in the browser of your choice. 
+You may see an installation prompt from playwright, if you are keen to see the tests running, please accept whatever it asks for. Otherwise you can see the last test result from the playwright-report folder inside of the apps/frontend/playwright-folder and open it in the browser of your choice.
 
 ## Step three:
+
 Once the installation is finished
->npm run dev
+
+> npm run dev
 
 The application should then be hosted on the following two adresses
 
@@ -45,7 +50,8 @@ React/Next.js \
 🟢 API Usage - Centralised API Module \
 🟢 Routing - Another Page \
 🟢 Testing - Basic E2E Test \
-🟢 Testing - API E2E Test
+🟢 Testing - API E2E Test \
+🔴 Later - i18n localisation
 
 Nest.Js \
 🟢 Basics - Project Setup \

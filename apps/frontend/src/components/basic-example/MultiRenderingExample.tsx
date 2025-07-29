@@ -41,8 +41,6 @@ export function ExampleContainer(props: { server: nestServerModule }) {
   } = useMultiRenderingContext() as MultiRenderingContext;
 
   useEffect(() => {
-    //AbortController pattern to avoid abort race conditions
-
     async function getExampleData() {
       setIsMultiLoading(true);
       setExampleList(await props.server.getArrayObjectExample());

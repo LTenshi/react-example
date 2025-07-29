@@ -2,6 +2,7 @@ import { Controller, Get, Param } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { AdvancedService } from './advanced.service';
 import {
+  DisplayReviewDTO,
   ReviewDTO,
   ReviewerInformationDTO,
   VideoGameDTO,
@@ -54,7 +55,7 @@ export class AdvancedController {
     description: 'Returns the array of video games',
   })
   @Get('advanced/video-games/:id/reviews')
-  getReviews(@Param() params: { id: string }): ReviewDTO[] {
+  getReviews(@Param() params: { id: string }): DisplayReviewDTO[] {
     return this.advancedService.getReviews(params.id);
   }
 

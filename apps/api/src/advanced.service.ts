@@ -4,6 +4,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import {
+  DisplayReviewDTO,
   ReviewDTO,
   ReviewedPlatformsEnum,
   ReviewerInformationDTO,
@@ -20,6 +21,13 @@ export class AdvancedService {
         'Real time strategy game set in alternate history earth if Einstein suddenly disappeared from history',
       ReviewIds: [0],
     },
+    {
+      ID: 1,
+      Title: `Baldur's Gate 3`,
+      Description:
+        'A turn-based tactical RPG featuring a wide array of colorful characters, beautiful maps and intricate D&D 5e based combat',
+      ReviewIds: [1, 2],
+    },
   ];
 
   reviews: ReviewDTO[] = [
@@ -31,6 +39,20 @@ export class AdvancedService {
       Rating: 9,
       ReviewerId: 0,
     },
+    {
+      ID: 1,
+      Title: 'A new cult classic',
+      ReviewText: `We're still not sure which character is our favourite, but it's a close toss up between Karlach and Withers`,
+      Rating: 10,
+      ReviewerId: 0,
+    },
+    {
+      ID: 2,
+      Title: 'Difficult for sure',
+      ReviewText: `I found the game to be too difficult for a new player`,
+      Rating: 6,
+      ReviewerId: 1,
+    },
   ];
 
   reviewers: ReviewerInformationDTO[] = [
@@ -41,6 +63,16 @@ export class AdvancedService {
       ReviewedPlatforms: [
         ReviewedPlatformsEnum.PC,
         ReviewedPlatformsEnum.XBOX360,
+      ],
+    },
+    {
+      ID: 1,
+      Name: 'Averagium Game Journalism',
+      Description: 'We hire gamers from all backgrounds',
+      ReviewedPlatforms: [
+        ReviewedPlatformsEnum.PS3,
+        ReviewedPlatformsEnum.XBOX360,
+        ReviewedPlatformsEnum.NINTENDOSWITCH,
       ],
     },
   ];
@@ -70,11 +102,20 @@ export class AdvancedService {
       throw new NotFoundException('No reviews exist for this title');
     }
 
-    const foundReviews: ReviewDTO[] = [];
+    const foundReviews: DisplayReviewDTO[] = [];
+
     found.ReviewIds.forEach((reviewId) => {
       const reviewFound = this.reviews.find((review) => review.ID === reviewId);
       if (reviewFound) {
-        foundReviews.push(reviewFound);
+        const reviewerFound = this.reviewers.find(
+          (reviewer) => reviewer.ID === reviewFound.ReviewerId,
+        );
+        if (reviewerFound) {
+          foundReviews.push({
+            Review: reviewFound,
+            Reviewer: reviewerFound,
+          });
+        }
       }
     });
 

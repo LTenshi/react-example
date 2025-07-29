@@ -37,6 +37,15 @@ export class ReviewDTO {
   ReviewerId: number;
 }
 
+export class DisplayReviewDTO {
+  constructor(_review: ReviewDTO, _reviewer: ReviewerInformationDTO) {
+    this.Review = _review;
+    this.Reviewer = _reviewer;
+  }
+  Review: ReviewDTO;
+  Reviewer: ReviewerInformationDTO;
+}
+
 export class VideoGameDTO {
   constructor(
     _id: number,

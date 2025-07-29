@@ -1,4 +1,5 @@
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
+import { DisplayReviewDTO, VideoGameDTO } from '@/classes/VideoGameDTOs';
 
 export default class nestServerModule {
   public async getExample(): Promise<string> {
@@ -72,6 +73,45 @@ export default class nestServerModule {
       })
       .then(() => {
         return true;
+      });
+  }
+
+  public async getGames(): Promise<VideoGameDTO[]> {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    return await fetch(
+      process.env.NEXT_PUBLIC_API_ENDPOINT + 'advanced/video-games',
+      {
+        method: 'GET',
+        signal: signal,
+      },
+    )
+      .catch((err) => {
+        throw new Error(err);
+      })
+      .then((res) => {
+        return res.json() as unknown as VideoGameDTO[];
+      });
+  }
+
+  public async getReviews(gameId: number): Promise<DisplayReviewDTO[]> {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    return await fetch(
+      process.env.NEXT_PUBLIC_API_ENDPOINT +
+        `advanced/video-games/${gameId}/reviews`,
+      {
+        method: 'GET',
+        signal: signal,
+      },
+    )
+      .catch((err) => {
+        throw new Error(err);
+      })
+      .then((res) => {
+        return res.json() as unknown as DisplayReviewDTO[];
       });
   }
 }
