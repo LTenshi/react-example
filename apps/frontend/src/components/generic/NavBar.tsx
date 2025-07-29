@@ -1,5 +1,5 @@
-import Link from "next/link";
-import UiBox from "./UiBox";
+import Link from 'next/link';
+import UiBox from '@/components/generic/UiBox';
 
 export default function NavBar() {
   return (
@@ -11,7 +11,10 @@ export default function NavBar() {
         <Link href="/examples">
           <h5>Examples</h5>
         </Link>
+        <Link href="/advanced">
+          <h5>Advanced Example</h5>
+        </Link>
       </div>
     </UiBox>
-  )
+  );
 }

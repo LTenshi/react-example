@@ -1,28 +1,28 @@
 export default function getRating(rating: number): string {
   if (rating > 10 || rating < 0) {
-    throw new Error("Rating not within expected range of 0 and 10");
+    throw new Error('Rating not within expected range of 0 and 10');
   }
 
   switch (rating) {
     //Half stars are not yet supported in many browsers so we'll bundle some values together
     case 0:
     case 1:
-      return "☆☆☆☆☆"
+      return '☆☆☆☆☆';
     case 2:
     case 3:
-      return "★☆☆☆☆"
+      return '★☆☆☆☆';
     case 4:
     case 5:
-      return "★★☆☆☆"
+      return '★★☆☆☆';
     case 6:
     case 7:
-      return "★★★☆☆"
+      return '★★★☆☆';
     case 8:
     case 9:
-      return "★★★★☆"
+      return '★★★★☆';
     case 10:
-      return "★★★★★"
+      return '★★★★★';
     default:
-      return "No Score"
+      return 'No Score';
   }
 }

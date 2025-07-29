@@ -1,9 +1,9 @@
 'use client'
-import ApiExample from "@/components/ApiExample";
-import AppWrapper from "@/components/AppWrapper";
-import FormExample from "@/components/FormExample";
-import MultiRenderingExample from "@/components/MultiRenderingExample";
-import UiBox from "@/components/UiBox";
+import ApiExample from "@/components/basic-example/ApiExample";
+import AppWrapper from "@/components/generic/AppWrapper";
+import FormExample from "@/components/basic-example/FormExample";
+import MultiRenderingExample from "@/components/basic-example/MultiRenderingExample";
+import UiBox from "@/components/generic/UiBox";
 import { MultiRenderingContextProvider } from "@/contexts/MultiRenderingContext";
 
 export default function Page() {
