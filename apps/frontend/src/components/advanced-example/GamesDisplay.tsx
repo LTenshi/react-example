@@ -1,6 +1,6 @@
 import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import FallbackSimple from '@/components/generic/FallbackSimple';
 import { DisplayReviewDTO, VideoGameDTO } from '@/classes/VideoGameDTOs';
 import {
@@ -15,13 +15,21 @@ export function GameBox(props: {
   server: nestServerModule;
 }) {
   const [reviewList, setReviewList] = useState<DisplayReviewDTO[]>([]);
+  const intialised = useRef(false);
 
   // FIXME: This is called twice, presumably because it's rendering twice
   useEffect(() => {
     async function getExampleData() {
       setReviewList(await props.server.getReviews(props.gameObject.ID));
     }
-    getExampleData();
+
+    if (!intialised.current) {
+      getExampleData();
+    }
+
+    return () => {
+      intialised.current = true;
+    };
   }, []);
 
   const reviewBoxArray = reviewList.map((item, index) => (
@@ -81,13 +89,20 @@ export function GameBoxContainer(props: { server: nestServerModule }) {
     setIsVideoGameListLoading,
   } = useAdvancedVideoGameContext() as AdvancedVideoGameContext;
 
+  const intialised = useRef(false);
+
   useEffect(() => {
     async function getExampleData() {
       setIsVideoGameListLoading(true);
       setVideoGameList(await props.server.getGames());
       setIsVideoGameListLoading(false);
     }
-    getExampleData();
+    if (!intialised.current) {
+      getExampleData();
+    }
+    return () => {
+      intialised.current = true;
+    };
   }, []);
 
   const gameBoxArray = videoGameList.map((item, index) => (

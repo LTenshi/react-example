@@ -1,6 +1,6 @@
 import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
 import FallbackSimple from '@/components/generic/FallbackSimple';
 //We could make a function that manually does that, but this is a widely accepted alternative to moment
@@ -39,6 +39,7 @@ export function ExampleContainer(props: { server: nestServerModule }) {
     setExampleList,
     setIsMultiLoading,
   } = useMultiRenderingContext() as MultiRenderingContext;
+  const intialised = useRef(false);
 
   useEffect(() => {
     async function getExampleData() {
@@ -46,7 +47,13 @@ export function ExampleContainer(props: { server: nestServerModule }) {
       setExampleList(await props.server.getArrayObjectExample());
       setIsMultiLoading(false);
     }
-    getExampleData();
+
+    if (!intialised.current) {
+      getExampleData();
+    }
+    return () => {
+      intialised.current = true;
+    };
   }, []);
 
   const exampleBoxArray = exampleList.map((item, index) => (
