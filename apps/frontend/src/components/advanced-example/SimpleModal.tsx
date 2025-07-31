@@ -29,7 +29,7 @@ export function SimpleModal(props: {
               }}
             >
               <div
-                className="absolute w-1/4 h-1/4 bg-white dark:bg-[#121212] rounded-xl overflow-hidden drop-shadow-xl dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
+                className="absolute w-1/4 h-auto bg-white dark:bg-[#121212] rounded-xl overflow-hidden drop-shadow-xl dark:shadow-none dark:-outline-offset-1 dark:outline-white/10"
                 onClick={(e) => e.stopPropagation()}
               >
                 <div className="p-2 w-full bg-black/5 dark:bg-white/5">

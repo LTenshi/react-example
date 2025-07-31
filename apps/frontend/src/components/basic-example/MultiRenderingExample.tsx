@@ -6,7 +6,7 @@ import FallbackSimple from '@/components/generic/FallbackSimple';
 //We could make a function that manually does that, but this is a widely accepted alternative to moment
 //and used inside of many commercial repositories.
 import { format } from 'date-fns';
-import getRating from '@/scripts/helpers';
+import { getRating } from '@/scripts/helpers';
 import {
   MultiRenderingContext,
   useMultiRenderingContext,

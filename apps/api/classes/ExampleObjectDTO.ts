@@ -1,4 +1,4 @@
-//I am duplicating this in the client.
+//TODO: I am duplicating this in the client https://turborepo.com/docs/crafting-your-repository/creating-an-internal-package
 
 import { ApiProperty } from '@nestjs/swagger';
 import { IsDateString, IsNotEmpty, IsNumber, IsString } from 'class-validator';

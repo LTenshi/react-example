@@ -1,4 +1,6 @@
-export default function getRating(rating: number): string {
+import { JSONPatchObject } from '@/classes/JSONPatchObject';
+
+export function getRating(rating: number): string {
   if (rating > 10 || rating < 0) {
     throw new Error('Rating not within expected range of 0 and 10');
   }
@@ -25,4 +27,26 @@ export default function getRating(rating: number): string {
     default:
       return 'No Score';
   }
+}
+
+export function PerformPatchOperation(
+  jsonPatchArray: JSONPatchObject[],
+  Property: string,
+  Value: string,
+) {
+  const modifiedPatchArray = [...jsonPatchArray];
+  const existingPatchValue = modifiedPatchArray.find(
+    (patch) => patch.Property === Property,
+  );
+
+  if (existingPatchValue) {
+    existingPatchValue.Value = Value;
+  } else {
+    modifiedPatchArray.push({
+      Property: Property,
+      Value: Value,
+    });
+  }
+
+  return modifiedPatchArray;
 }

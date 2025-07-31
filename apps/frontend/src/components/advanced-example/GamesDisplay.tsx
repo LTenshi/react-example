@@ -2,14 +2,20 @@ import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import FallbackSimple from '@/components/generic/FallbackSimple';
-import { DisplayReviewDTO, VideoGameDTO } from '@/classes/VideoGameDTOs';
+import {
+  DisplayReviewDTO,
+  ReviewDTO,
+  VideoGameDTO,
+} from '@/classes/VideoGameDTOs';
 import {
   AdvancedVideoGameContext,
   useAdvancedVideoGameContext,
 } from '@/contexts/AdvancedVideoGameContext';
 import { TextDivider } from '../generic/TextDivider';
-import getRating from '@/scripts/helpers';
+import { getRating, PerformPatchOperation } from '@/scripts/helpers';
 import { SimpleModal } from './SimpleModal';
+import InputWrapper from '../generic/InputWrapper';
+import { JSONPatchObject } from '@/classes/JSONPatchObject';
 
 export function GameBox(props: {
   gameObject: VideoGameDTO;
@@ -76,6 +82,7 @@ export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
           <tr>
             <td className="w-full pr-1">{props.reviewObject.Review.Title}</td>
             <td
+              data-testid={`input-review-${props.reviewObject.Review.ID}`}
               className="material-icons text-sm! cursor-pointer"
               onClick={() => setIsModalVisible(true)}
             >
@@ -91,20 +98,91 @@ export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
         Reviewer Rating: {getRating(props.reviewObject.Review.Rating)}
       </div>
       <SimpleModal
-        title="Test"
+        title="Edit Review"
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
       >
-        <EditReviewModalContent />
+        <EditReviewModalContent review={props.reviewObject.Review} />
       </SimpleModal>
     </>
   );
 }
 
-function EditReviewModalContent() {
+function EditReviewModalContent(props: { review: ReviewDTO }) {
+  //Cloning the object so we don't change the prop
+  const [clonedReviewObject, setClonedReviewObject] = useState(props.review);
+  //We'll use this object to patch the values in the API
+  const [patchObject, setPatchObject] = useState<JSONPatchObject[]>([]);
+
+  useEffect(() => setClonedReviewObject(props.review), []);
+
   return (
     <>
-      <div>Contents</div>
+      <form onSubmit={(e) => e.preventDefault()}>
+        {JSON.stringify(patchObject)}
+        <InputWrapper inputTitle="Review Title">
+          <input
+            data-testid="input-review-title"
+            className="w-full"
+            name="Title"
+            required
+            value={clonedReviewObject.Title}
+            onChange={(e) => {
+              setClonedReviewObject({
+                ...clonedReviewObject,
+                Title: e.target.value,
+              });
+              setPatchObject(
+                PerformPatchOperation(patchObject, 'Title', e.target.value),
+              );
+            }}
+          ></input>
+        </InputWrapper>
+        <InputWrapper inputTitle="Rating">
+          <input
+            data-testid="input-review-rating"
+            className="w-full"
+            type="number"
+            min={0}
+            max={10}
+            required
+            value={clonedReviewObject.Rating}
+            onChange={(e) => {
+              setClonedReviewObject({
+                ...clonedReviewObject,
+                Rating: Number(e.target.value),
+              });
+              setPatchObject(
+                PerformPatchOperation(patchObject, 'Rating', e.target.value),
+              );
+            }}
+          ></input>
+        </InputWrapper>
+        <InputWrapper inputTitle="Review">
+          <textarea
+            data-testid="textarea-review-text"
+            className="w-full"
+            name="ReviewText"
+            required
+            value={clonedReviewObject.ReviewText}
+            onChange={(e) => {
+              setClonedReviewObject({
+                ...clonedReviewObject,
+                ReviewText: e.target.value,
+              });
+              setPatchObject(
+                PerformPatchOperation(
+                  patchObject,
+                  'ReviewText',
+                  e.target.value,
+                ),
+              );
+            }}
+          ></textarea>
+        </InputWrapper>
+        <button className="p-1 mr-2">Cancel</button>
+        <button className="p-1">Submit</button>
+      </form>
     </>
   );
 }

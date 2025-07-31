@@ -40,6 +40,7 @@ React/Next.js \
 🟢 Basics - Basic Component \
 🟢 Basics - Slotted Component \
 🟢 Basics - CSS Classes and Loading \
+🟢 Basics - Updating properties in state objects \
 🟢 Basics - Memos \
 🟢 Basics - Conditional Rendering \
 🟢 Basics - Loop Rendering \
@@ -66,3 +67,6 @@ Nest.Js \
 🔴 Basics - Database interactions - I'm figuring out how I can make this work locally without hassle for anyone pulling\
 🟢 Later - API Root Splash \
 🟢 Later - API Swagger (API documentation) \
+
+Both:
+🔴 Later - Dedupe Classes https://turborepo.com/docs/crafting-your-repository/creating-an-internal-package\
