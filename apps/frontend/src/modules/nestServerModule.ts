@@ -1,6 +1,10 @@
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
 import { JSONPatchObject } from '@/classes/JSONPatchObject';
-import { DisplayReviewDTO, VideoGameDTO } from '@/classes/VideoGameDTOs';
+import {
+  DisplayReviewDTO,
+  ReviewDTO,
+  VideoGameDTO,
+} from '@/classes/VideoGameDTOs';
 
 export default class nestServerModule {
   public async getExample(): Promise<string> {
@@ -120,7 +124,7 @@ export default class nestServerModule {
     reviewId: number,
     gameId: number,
     patchData: JSONPatchObject[],
-  ) {
+  ): Promise<ReviewDTO> {
     const controller = new AbortController();
     const { signal } = controller;
 
@@ -137,7 +141,7 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
-        return res.json() as unknown as DisplayReviewDTO[];
+        return res.json() as unknown as ReviewDTO;
       });
   }
 }

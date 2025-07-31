@@ -132,8 +132,15 @@ function EditReviewModalContent(props: {
   //We'll use this object to patch the values in the API
   const [patchObject, setPatchObject] = useState<JSONPatchObject[]>([]);
 
-  function patchReview() {
-    props.server.patchReview(props.review.ID, props.gameId, patchObject);
+  async function patchReview() {
+    props.review = await props.server.patchReview(
+      props.review.ID,
+      props.gameId,
+      patchObject,
+    );
+    if (typeof props.onCancel === 'function') {
+      props.onCancel();
+    }
   }
 
   useEffect(() => setClonedReviewObject(props.review), []);
