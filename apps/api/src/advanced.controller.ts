@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch } from '@nestjs/common';
 import { ApiOperation, ApiParam, ApiResponse } from '@nestjs/swagger';
 import { AdvancedService } from './advanced.service';
 import {
@@ -7,6 +7,7 @@ import {
   ReviewerInformationDTO,
   VideoGameDTO,
 } from 'classes/VideoGameDTOs';
+import { JSONPatchObject } from 'classes/JSONPatchObject';
 
 @Controller()
 export class AdvancedController {
@@ -112,5 +113,22 @@ export class AdvancedController {
     @Param() params: { reviewId: string },
   ): ReviewerInformationDTO {
     return this.advancedService.getReviewReviewer(params.reviewId);
+  }
+
+  @ApiParam({
+    name: 'gameId',
+    type: Number,
+  })
+  @ApiParam({
+    name: 'reviewId',
+    type: Number,
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Returns the patched review object',
+  })
+  @Patch('advanced/video-games/:gameId/reviews/:reviewId')
+  patchReview(@Body() body: JSONPatchObject[]) {
+    this.advancedService.patchReview(body);
   }
 }

@@ -2,7 +2,9 @@ import {
   Injectable,
   InternalServerErrorException,
   NotFoundException,
+  NotImplementedException,
 } from '@nestjs/common';
+import { JSONPatchObject } from 'classes/JSONPatchObject';
 import {
   DisplayReviewDTO,
   ReviewDTO,
@@ -192,5 +194,9 @@ export class AdvancedService {
     }
 
     return foundReviewer;
+  }
+
+  patchReview(reviewPatchOperation: JSONPatchObject[]) {
+    throw new NotImplementedException();
   }
 }
