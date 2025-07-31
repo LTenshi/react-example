@@ -198,7 +198,11 @@ function EditReviewModalContent(props: {
                 Rating: Number(e.target.value),
               });
               setPatchObject(
-                PerformPatchOperation(patchObject, 'Rating', e.target.value),
+                PerformPatchOperation(
+                  patchObject,
+                  'Rating',
+                  Number(e.target.value),
+                ),
               );
             }}
           ></input>

@@ -32,7 +32,7 @@ export function getRating(rating: number): string {
 export function PerformPatchOperation(
   jsonPatchArray: JSONPatchObject[],
   Property: string,
-  Value: string,
+  Value: string | number | boolean,
 ) {
   const modifiedPatchArray = [...jsonPatchArray];
   const existingPatchValue = modifiedPatchArray.find(

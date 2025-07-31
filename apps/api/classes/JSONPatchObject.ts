@@ -4,5 +4,5 @@ export class JSONPatchObject {
     this.Value = _value;
   }
   Property: string;
-  Value: string;
+  Value: string | number | boolean;
 }
