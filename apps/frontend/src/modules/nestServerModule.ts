@@ -18,6 +18,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.text();
       });
   }
@@ -36,6 +39,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.json() as unknown as ExampleObjectDTO[];
       });
   }
@@ -55,6 +61,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.text();
       });
   }
@@ -76,7 +85,10 @@ export default class nestServerModule {
       .catch((err) => {
         throw new Error(err);
       })
-      .then(() => {
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return true;
       });
   }
@@ -96,6 +108,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.json() as unknown as VideoGameDTO[];
       });
   }
@@ -116,6 +131,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.json() as unknown as DisplayReviewDTO[];
       });
   }
@@ -141,6 +159,9 @@ export default class nestServerModule {
         throw new Error(err);
       })
       .then((res) => {
+        if (!res.ok) {
+          throw new Error('Request failed');
+        }
         return res.json() as unknown as ReviewDTO;
       });
   }

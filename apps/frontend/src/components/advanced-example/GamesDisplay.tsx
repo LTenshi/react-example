@@ -151,8 +151,7 @@ function EditReviewModalContent(props: {
       props.gameId,
       patchObject,
     );
-
-    props.onSuccessfulUpdate(updatedReview);
+    if (updatedReview) props.onSuccessfulUpdate(updatedReview);
 
     if (typeof props.onCancel === 'function') {
       props.onCancel();

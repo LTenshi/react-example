@@ -34,7 +34,7 @@ http://localhost:3001/api-docs - Swagger API Docs
 
 Here's the roadmap of features I expect to have in this repository (It's incomplete, and will be expanded with more ideas over time):
 
-React/Next.js \
+React/Next.js - Frontend \
 🟢 Basics - Project Setup \
 🟢 Basics - Small Landing Page \
 🟢 Basics - Basic Component \
@@ -56,7 +56,7 @@ React/Next.js \
 🟢 Testing - API E2E Test \
 🔴 Later - i18n localisation
 
-Nest.Js \
+Nest.Js - Backend \
 🟢 Basics - Project Setup \
 🟢 Basics - Simple GET Endpoint \
 🟢 Basics - Simple POST Endpoint \
