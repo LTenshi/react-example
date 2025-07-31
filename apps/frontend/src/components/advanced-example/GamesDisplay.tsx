@@ -119,7 +119,6 @@ function EditReviewModalContent(props: { review: ReviewDTO }) {
   return (
     <>
       <form onSubmit={(e) => e.preventDefault()}>
-        {JSON.stringify(patchObject)}
         <InputWrapper inputTitle="Review Title">
           <input
             data-testid="input-review-title"

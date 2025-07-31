@@ -50,6 +50,7 @@ React/Next.js \
 🟢 API Usage - Get \
 🟢 API Usage - Post \
 🟢 API Usage - Centralised API Module \
+🟢 API Usage - PATCH compilation method \
 🟢 Routing - Another Page \
 🟢 Testing - Basic E2E Test \
 🟢 Testing - API E2E Test \
