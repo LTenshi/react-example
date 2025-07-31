@@ -60,6 +60,7 @@ Nest.Js - Backend \
 🟢 Basics - Project Setup \
 🟢 Basics - Simple GET Endpoint \
 🟢 Basics - Simple POST Endpoint \
+🟢 Basics - Simple PATCH Endpoint \
 🟢 Basics - More Advanced GET Endpoint with JSON return \
 🟢 Basics - Validation of incoming Data \
 🟢 Basics - Validation Pipes \
