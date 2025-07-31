@@ -140,7 +140,6 @@ export default class nestServerModule {
 
   public async patchReview(
     reviewId: number,
-    gameId: number,
     patchData: JSONPatchObject[],
   ): Promise<ReviewDTO> {
     const controller = new AbortController();
@@ -148,10 +147,13 @@ export default class nestServerModule {
 
     return await fetch(
       process.env.NEXT_PUBLIC_API_ENDPOINT +
-        `advanced/video-games/${gameId}/reviews/${reviewId}`,
+        `advanced/video-games/reviews/${reviewId}`,
       {
         method: 'PATCH',
         body: JSON.stringify(patchData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
         signal: signal,
       },
     )

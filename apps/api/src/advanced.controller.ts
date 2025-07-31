@@ -127,8 +127,12 @@ export class AdvancedController {
     status: 200,
     description: 'Returns the patched review object',
   })
-  @Patch('advanced/video-games/:gameId/reviews/:reviewId')
-  patchReview(@Body() body: JSONPatchObject[]) {
-    this.advancedService.patchReview(body);
+  @Patch('advanced/video-games/reviews/:reviewId')
+  patchReview(
+    @Body() body: JSONPatchObject[],
+    @Param() params: { reviewId: string },
+  ): ReviewDTO {
+    console.log(body);
+    return this.advancedService.patchReview(body, params);
   }
 }

@@ -121,7 +121,6 @@ export function ReviewBox(props: {
       >
         <EditReviewModalContent
           review={props.reviewObject.Review}
-          gameId={props.gameId}
           server={props.server}
           onCancel={() => setIsModalVisible(false)}
           onSuccessfulUpdate={(updatedReview) =>
@@ -135,7 +134,6 @@ export function ReviewBox(props: {
 
 function EditReviewModalContent(props: {
   review: ReviewDTO;
-  gameId: number;
   server: nestServerModule;
   onCancel?: () => void;
   onSuccessfulUpdate: (updatedReview: ReviewDTO) => void;
@@ -148,7 +146,6 @@ function EditReviewModalContent(props: {
   async function patchReview() {
     const updatedReview = await props.server.patchReview(
       props.review.ID,
-      props.gameId,
       patchObject,
     );
     if (updatedReview) props.onSuccessfulUpdate(updatedReview);

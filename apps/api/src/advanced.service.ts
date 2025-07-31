@@ -196,7 +196,24 @@ export class AdvancedService {
     return foundReviewer;
   }
 
-  patchReview(reviewPatchOperation: JSONPatchObject[]) {
-    throw new NotImplementedException();
+  patchReview(
+    reviewPatchOperation: JSONPatchObject[],
+    params: { reviewId: string },
+  ) {
+    const reviewToPatch = this.reviews.find(
+      (review) => review.ID === Number(params.reviewId),
+    );
+
+    if (!reviewToPatch) {
+      throw new NotFoundException(
+        `Review with ID ${params.reviewId} was not found`,
+      );
+    }
+
+    reviewPatchOperation.forEach((operation) => {
+      reviewToPatch[operation.Property] = operation.Value;
+    });
+
+    return reviewToPatch;
   }
 }
