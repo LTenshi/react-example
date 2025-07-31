@@ -38,12 +38,20 @@ export function GameBox(props: {
     };
   }, []);
 
+  function handleReviewUpdate(review: ReviewDTO) {
+    const updatedReview = reviewList.find((oldReview) => oldReview.Review.ID);
+    if (updatedReview) updatedReview.Review = review;
+  }
+
   const reviewBoxArray = reviewList.map((item, index) => (
     <div key={index} data-testid={`review-${index}`}>
       <ReviewBox
         reviewObject={item}
         gameId={props.gameObject.ID}
         server={props.server}
+        onSuccessfulUpdate={(updatedReview) =>
+          handleReviewUpdate(updatedReview)
+        }
       ></ReviewBox>
     </div>
   ));
@@ -66,6 +74,7 @@ export function ReviewBox(props: {
   reviewObject: DisplayReviewDTO;
   gameId: number;
   server: nestServerModule;
+  onSuccessfulUpdate: (updatedReview: ReviewDTO) => void;
 }) {
   const [isReviewerInfoVisible, setisReviewerInfoVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -115,6 +124,9 @@ export function ReviewBox(props: {
           gameId={props.gameId}
           server={props.server}
           onCancel={() => setIsModalVisible(false)}
+          onSuccessfulUpdate={(updatedReview) =>
+            props.onSuccessfulUpdate(updatedReview)
+          }
         />
       </SimpleModal>
     </>
@@ -126,6 +138,7 @@ function EditReviewModalContent(props: {
   gameId: number;
   server: nestServerModule;
   onCancel?: () => void;
+  onSuccessfulUpdate: (updatedReview: ReviewDTO) => void;
 }) {
   //Cloning the object so we don't change the prop
   const [clonedReviewObject, setClonedReviewObject] = useState(props.review);
@@ -133,11 +146,14 @@ function EditReviewModalContent(props: {
   const [patchObject, setPatchObject] = useState<JSONPatchObject[]>([]);
 
   async function patchReview() {
-    props.review = await props.server.patchReview(
+    const updatedReview = await props.server.patchReview(
       props.review.ID,
       props.gameId,
       patchObject,
     );
+
+    props.onSuccessfulUpdate(updatedReview);
+
     if (typeof props.onCancel === 'function') {
       props.onCancel();
     }
