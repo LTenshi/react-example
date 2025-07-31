@@ -132,7 +132,6 @@ export class AdvancedController {
     @Body() body: JSONPatchObject[],
     @Param() params: { reviewId: string },
   ): ReviewDTO {
-    console.log(body);
     return this.advancedService.patchReview(body, params);
   }
 }
