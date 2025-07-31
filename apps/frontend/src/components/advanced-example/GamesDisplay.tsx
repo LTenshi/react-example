@@ -40,7 +40,11 @@ export function GameBox(props: {
 
   const reviewBoxArray = reviewList.map((item, index) => (
     <div key={index} data-testid={`review-${index}`}>
-      <ReviewBox reviewObject={item}></ReviewBox>
+      <ReviewBox
+        reviewObject={item}
+        gameId={props.gameObject.ID}
+        server={props.server}
+      ></ReviewBox>
     </div>
   ));
 
@@ -58,7 +62,11 @@ export function GameBox(props: {
   );
 }
 
-export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
+export function ReviewBox(props: {
+  reviewObject: DisplayReviewDTO;
+  gameId: number;
+  server: nestServerModule;
+}) {
   const [isReviewerInfoVisible, setisReviewerInfoVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -102,23 +110,42 @@ export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
       >
-        <EditReviewModalContent review={props.reviewObject.Review} />
+        <EditReviewModalContent
+          review={props.reviewObject.Review}
+          gameId={props.gameId}
+          server={props.server}
+          onCancel={() => setIsModalVisible(false)}
+        />
       </SimpleModal>
     </>
   );
 }
 
-function EditReviewModalContent(props: { review: ReviewDTO }) {
+function EditReviewModalContent(props: {
+  review: ReviewDTO;
+  gameId: number;
+  server: nestServerModule;
+  onCancel?: () => void;
+}) {
   //Cloning the object so we don't change the prop
   const [clonedReviewObject, setClonedReviewObject] = useState(props.review);
   //We'll use this object to patch the values in the API
   const [patchObject, setPatchObject] = useState<JSONPatchObject[]>([]);
 
+  function patchReview() {
+    props.server.patchReview(props.review.ID, props.gameId, patchObject);
+  }
+
   useEffect(() => setClonedReviewObject(props.review), []);
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          patchReview();
+        }}
+      >
         <InputWrapper inputTitle="Review Title">
           <input
             data-testid="input-review-title"
@@ -179,8 +206,18 @@ function EditReviewModalContent(props: { review: ReviewDTO }) {
             }}
           ></textarea>
         </InputWrapper>
-        <button className="p-1 mr-2">Cancel</button>
-        <button className="p-1">Submit</button>
+        <div className="justify-self-end">
+          <button className="p-1 mr-2" onClick={props.onCancel}>
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="p-1 bg-white text-black not-dark:bg-black not-dark:text-white"
+            disabled={!patchObject.length}
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </>
   );

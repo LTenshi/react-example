@@ -41,6 +41,10 @@
     cursor: pointer;
   }
 
+  button:disabled {
+    cursor: not-allowed;
+  }
+
   @media (prefers-color-scheme: dark) {
     input,
     textarea {

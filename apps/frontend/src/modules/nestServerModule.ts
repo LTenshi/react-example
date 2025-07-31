@@ -1,4 +1,5 @@
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
+import { JSONPatchObject } from '@/classes/JSONPatchObject';
 import { DisplayReviewDTO, VideoGameDTO } from '@/classes/VideoGameDTOs';
 
 export default class nestServerModule {
@@ -104,6 +105,31 @@ export default class nestServerModule {
         `advanced/video-games/${gameId}/reviews`,
       {
         method: 'GET',
+        signal: signal,
+      },
+    )
+      .catch((err) => {
+        throw new Error(err);
+      })
+      .then((res) => {
+        return res.json() as unknown as DisplayReviewDTO[];
+      });
+  }
+
+  public async patchReview(
+    reviewId: number,
+    gameId: number,
+    patchData: JSONPatchObject[],
+  ) {
+    const controller = new AbortController();
+    const { signal } = controller;
+
+    return await fetch(
+      process.env.NEXT_PUBLIC_API_ENDPOINT +
+        `advanced/video-games/${gameId}/reviews/${reviewId}`,
+      {
+        method: 'PATCH',
+        body: JSON.stringify(patchData),
         signal: signal,
       },
     )
