@@ -10,6 +10,7 @@
     "test-e2e": "npx playwright test"
   },
   "dependencies": {
+    "material-icons": "^1.13.14",
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -25,4 +26,3 @@
     "typescript": "^5"
   }
 }
-

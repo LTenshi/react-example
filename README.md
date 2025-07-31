@@ -43,6 +43,7 @@ React/Next.js \
 🟢 Basics - Memos \
 🟢 Basics - Conditional Rendering \
 🟢 Basics - Loop Rendering \
+🟢 Basics - Custom Event Handling \
 🟢 Advanced - Use of Forms \
 🟢 Advanced - Use of Contexts \
 🟢 API Usage - Get \

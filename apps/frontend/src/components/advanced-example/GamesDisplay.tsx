@@ -9,6 +9,7 @@ import {
 } from '@/contexts/AdvancedVideoGameContext';
 import { TextDivider } from '../generic/TextDivider';
 import getRating from '@/scripts/helpers';
+import { SimpleModal } from './SimpleModal';
 
 export function GameBox(props: {
   gameObject: VideoGameDTO;
@@ -53,6 +54,7 @@ export function GameBox(props: {
 
 export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
   const [isReviewerInfoVisible, setisReviewerInfoVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <>
@@ -69,13 +71,40 @@ export function ReviewBox(props: { reviewObject: DisplayReviewDTO }) {
           )}
         </div>
       </UiBox>
-      <div className="m-2">{props.reviewObject.Review.Title}</div>
+      <table className="m-2 table-fixed">
+        <tbody>
+          <tr>
+            <td className="w-full pr-1">{props.reviewObject.Review.Title}</td>
+            <td
+              className="material-icons text-sm! cursor-pointer"
+              onClick={() => setIsModalVisible(true)}
+            >
+              edit
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <div className="text-[12px] italic m-2">
         {props.reviewObject.Review.ReviewText}
       </div>
       <div className="text-end text-[12px]">
         Reviewer Rating: {getRating(props.reviewObject.Review.Rating)}
       </div>
+      <SimpleModal
+        title="Test"
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+      >
+        <EditReviewModalContent />
+      </SimpleModal>
+    </>
+  );
+}
+
+function EditReviewModalContent() {
+  return (
+    <>
+      <div>Contents</div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 //Box allowing a component to passthrough
 export default function UiBox(props: {
   className?: string;
-  children: React.ReactElement | string;
+  children: React.ReactElement | React.ReactElement[] | string;
 }) {
   return (
     <div
@@ -14,3 +14,4 @@ export default function UiBox(props: {
     </div>
   );
 }
+

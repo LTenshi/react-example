@@ -10,8 +10,10 @@ export default function Page() {
       <UiBox>
         <div className="p-2 mt-2 text-xl font-medium text-black dark:text-white">
           <h6>
-            A more advanced example involving ids, primary and foreign key
-            setups as well as PATCH rest calls (currently under construction)
+            A more advanced example. The API has ids, primary and foreign key
+            setups as well as PATCH rest calls while the client offers custom
+            events, modal portaling and event propagation halting (currently
+            under construction)
           </h6>
         </div>
       </UiBox>
