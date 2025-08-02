@@ -13,9 +13,72 @@ import {
 } from '@/contexts/AdvancedVideoGameContext';
 import { TextDivider } from '../generic/TextDivider';
 import { getRating, PerformPatchOperation } from '@/scripts/helpers';
-import { SimpleModal } from './SimpleModal';
+import { SimpleModal } from '../generic/SimpleModal';
 import InputWrapper from '../generic/InputWrapper';
 import { JSONPatchObject } from '@/classes/JSONPatchObject';
+
+export default function GamesDisplay() {
+  const nestServer = useMemo(() => {
+    return new nestServerModule();
+  }, []);
+
+  return (
+    <UiBox className="mt-2">
+      <div className="p-2">
+        <GameBoxContainer server={nestServer}></GameBoxContainer>
+      </div>
+    </UiBox>
+  );
+}
+
+export function GameBoxContainer(props: { server: nestServerModule }) {
+  const {
+    videoGameList,
+    isVideoGameListLoading,
+    setVideoGameList,
+    setIsVideoGameListLoading,
+  } = useAdvancedVideoGameContext() as AdvancedVideoGameContext;
+
+  const intialised = useRef(false);
+
+  useEffect(() => {
+    async function getExampleData() {
+      setIsVideoGameListLoading(true);
+      setVideoGameList(await props.server.getGames());
+      setIsVideoGameListLoading(false);
+    }
+    if (!intialised.current) {
+      getExampleData();
+    }
+    return () => {
+      intialised.current = true;
+    };
+  }, []);
+
+  const gameBoxArray = videoGameList.map((item, index) => (
+    <div key={index} data-testid={`game-${index}`}>
+      <GameBox gameObject={item} server={props.server}></GameBox>
+    </div>
+  ));
+
+  return (
+    <>
+      <h4>A list of video games</h4>
+      <h6>
+        The data for these is fetched from the API GET{' '}
+        <a href={process.env.NEXT_PUBLIC_API_ENDPOINT + 'advanced/video-games'}>
+          {process.env.NEXT_PUBLIC_API_ENDPOINT + 'advanced/video-games'}
+        </a>
+      </h6>
+      {isVideoGameListLoading && <FallbackSimple />}
+      {!isVideoGameListLoading && (
+        <div className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-2">
+          {gameBoxArray}
+        </div>
+      )}
+    </>
+  );
+}
 
 export function GameBox(props: {
   gameObject: VideoGameDTO;
@@ -243,66 +306,5 @@ function EditReviewModalContent(props: {
         </div>
       </form>
     </>
-  );
-}
-
-export function GameBoxContainer(props: { server: nestServerModule }) {
-  const {
-    videoGameList,
-    isVideoGameListLoading,
-    setVideoGameList,
-    setIsVideoGameListLoading,
-  } = useAdvancedVideoGameContext() as AdvancedVideoGameContext;
-
-  const intialised = useRef(false);
-
-  useEffect(() => {
-    async function getExampleData() {
-      setIsVideoGameListLoading(true);
-      setVideoGameList(await props.server.getGames());
-      setIsVideoGameListLoading(false);
-    }
-    if (!intialised.current) {
-      getExampleData();
-    }
-    return () => {
-      intialised.current = true;
-    };
-  }, []);
-
-  const gameBoxArray = videoGameList.map((item, index) => (
-    <div key={index} data-testid={`game-${index}`}>
-      <GameBox gameObject={item} server={props.server}></GameBox>
-    </div>
-  ));
-
-  return (
-    <>
-      <h4>A list of video games</h4>
-      <h6>
-        The data for these is fetched from the API GET{' '}
-        <a href={process.env.NEXT_PUBLIC_API_ENDPOINT + 'advanced/video-games'}>
-          {process.env.NEXT_PUBLIC_API_ENDPOINT + 'advanced/video-games'}
-        </a>
-      </h6>
-      {isVideoGameListLoading && <FallbackSimple />}
-      {!isVideoGameListLoading && (
-        <div className="grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 p-2">
-          {gameBoxArray}
-        </div>
-      )}
-    </>
-  );
-}
-
-export default function GamesDisplay() {
-  const nestServer = useMemo(() => new nestServerModule(), []);
-
-  return (
-    <UiBox className="mt-2">
-      <div className="p-2">
-        <GameBoxContainer server={nestServer}></GameBoxContainer>
-      </div>
-    </UiBox>
   );
 }

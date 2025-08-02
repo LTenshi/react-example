@@ -39,6 +39,7 @@ export function ExampleContainer(props: { server: nestServerModule }) {
     setExampleList,
     setIsMultiLoading,
   } = useMultiRenderingContext() as MultiRenderingContext;
+
   const intialised = useRef(false);
 
   useEffect(() => {

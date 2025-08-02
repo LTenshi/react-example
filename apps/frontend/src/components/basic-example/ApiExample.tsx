@@ -1,6 +1,6 @@
 // Here I access the Nest.Js API that should be hosted on the 3001 port
 
-import { useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
 import FallbackSimple from '@/components/generic/FallbackSimple';
@@ -8,7 +8,6 @@ import FallbackSimple from '@/components/generic/FallbackSimple';
 export default function ApiExample() {
   // useMemo to make an instance and not recreate it everytime it re-renders
   const nestServer = useMemo(() => new nestServerModule(), []);
-
   return (
     <UiBox className="mt-2">
       <div className="p-2">

@@ -25,6 +25,7 @@ export default function FormExample() {
       rating: number;
       dateAdded: Date;
     };
+
     const parsedFormJson = new ExampleObjectDTO(
       formJson.title,
       formJson.description,

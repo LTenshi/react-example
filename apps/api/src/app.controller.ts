@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
-import { ExampleObjectDTO } from 'classes/ExampleObjectDTO';
+import { ExampleObjectDTO } from '../classes/ExampleObjectDTO';
 import { ApiOperation, ApiProperty, ApiResponse } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
