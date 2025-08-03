@@ -103,7 +103,9 @@ export function GameBox(props: {
   }, []);
 
   function handleReviewUpdate(review: ReviewDTO) {
-    const updatedReview = reviewList.find((oldReview) => oldReview.Review.ID);
+    const updatedReview = reviewList.find(
+      (oldReview) => oldReview.Review.ID === review.ID,
+    );
     if (updatedReview) updatedReview.Review = review;
   }
 
