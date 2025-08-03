@@ -1,4 +1,4 @@
-export function TextDivider(props: { children?: string }) {
+export default function TextDivider(props: { children?: string }) {
   return (
     <>
       <div className="flex align-middle">

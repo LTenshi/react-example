@@ -1,7 +1,7 @@
-import NavBar from '@/components/generic/NavBar';
-import TitleBar from '@/components/generic/TitleBar';
-
 // The AppWrapper should ideally be stateless, so that I can use it in layout.tsx and not re-render this every time a page changes
+
+import { NavBar, TitleBar } from '.';
+
 // I'm leaving this here to say that I am aware of it.
 export default function AppWrapper(props: {
   children: React.ReactElement | React.ReactElement[] | string;

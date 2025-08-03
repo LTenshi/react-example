@@ -1,6 +1,6 @@
 import { createPortal } from 'react-dom';
 
-export function SimpleModal(props: {
+export default function SimpleModal(props: {
   children: React.ReactElement | React.ReactElement[] | string;
   title: string;
   visible?: boolean;

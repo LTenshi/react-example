@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import UiBox from '@/components/generic/UiBox';
 import cssTools from '@/css/tools.module.css';
+import { UiBox } from '.';
 
 export default function TitleBar() {
   const others = ['Next.js', 'Nest.js', 'Turbo'];

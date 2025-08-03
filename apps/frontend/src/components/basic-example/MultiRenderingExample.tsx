@@ -1,8 +1,6 @@
 import nestServerModule from '@/modules/nestServerModule';
-import UiBox from '@/components/generic/UiBox';
 import { useEffect, useRef } from 'react';
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
-import FallbackSimple from '@/components/generic/FallbackSimple';
 //We could make a function that manually does that, but this is a widely accepted alternative to moment
 //and used inside of many commercial repositories.
 import { format } from 'date-fns';
@@ -12,6 +10,7 @@ import {
   useMultiRenderingContext,
 } from '@/contexts/MultiRenderingContext';
 import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
+import { FallbackSimple, UiBox } from '../generic';
 
 export function ExampleBox(props: { exampleObject: ExampleObjectDTO }) {
   const dateAdded = format(props.exampleObject.dateAdded, 'dd/MM/yyyy');

@@ -1,6 +1,4 @@
-import UiBox from '@/components/generic/UiBox';
 import { useEffect, useRef, useState } from 'react';
-import FallbackSimple from '@/components/generic/FallbackSimple';
 import {
   DisplayReviewDTO,
   ReviewDTO,
@@ -10,13 +8,17 @@ import {
   AdvancedVideoGameContext,
   useAdvancedVideoGameContext,
 } from '@/contexts/AdvancedVideoGameContext';
-import { TextDivider } from '../generic/TextDivider';
 import { getRating, PerformPatchOperation } from '@/scripts/helpers';
-import { SimpleModal } from '../generic/SimpleModal';
-import InputWrapper from '../generic/InputWrapper';
 import { JSONPatchObject } from '@/classes/JSONPatchObject';
 import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
 import nestServerModule from '@/modules/nestServerModule';
+import {
+  FallbackSimple,
+  InputWrapper,
+  SimpleModal,
+  TextDivider,
+  UiBox,
+} from '@/components/generic';
 
 export default function GamesDisplay() {
   const { apiModule } = useApiContext() as ApiContext;

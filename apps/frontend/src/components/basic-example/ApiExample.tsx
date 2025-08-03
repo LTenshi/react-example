@@ -1,10 +1,8 @@
 // Here I access the Nest.Js API that should be hosted on the 3001 port
-
 import React, { useState } from 'react';
 import nestServerModule from '@/modules/nestServerModule';
-import UiBox from '@/components/generic/UiBox';
-import FallbackSimple from '@/components/generic/FallbackSimple';
 import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
+import { FallbackSimple, UiBox } from '../generic';
 
 export default function ApiExample() {
   const { apiModule } = useApiContext() as ApiContext;

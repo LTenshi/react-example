@@ -1,12 +1,11 @@
 import { FormEvent } from 'react';
-import UiBox from '@/components/generic/UiBox';
-import InputWrapper from '@/components/generic/InputWrapper';
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
 import {
   MultiRenderingContext,
   useMultiRenderingContext,
 } from '@/contexts/MultiRenderingContext';
 import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
+import { InputWrapper, UiBox } from '../generic';
 
 export default function FormExample() {
   const { setExampleList, setIsMultiLoading } =
