@@ -5,6 +5,7 @@ import FormExample from '@/components/basic-example/FormExample';
 import MultiRenderingExample from '@/components/basic-example/MultiRenderingExample';
 import UiBox from '@/components/generic/UiBox';
 import { MultiRenderingContextProvider } from '@/contexts/MultiRenderingContext';
+import { ApiContextProvider } from '@/contexts/ApiProviderContext';
 
 export default function Page() {
   return (
@@ -20,11 +21,13 @@ export default function Page() {
           </h6>
         </div>
       </UiBox>
-      <MultiRenderingContextProvider>
-        <ApiExample />
-        <MultiRenderingExample />
-        <FormExample />
-      </MultiRenderingContextProvider>
+      <ApiContextProvider>
+        <MultiRenderingContextProvider>
+          <ApiExample />
+          <MultiRenderingExample />
+          <FormExample />
+        </MultiRenderingContextProvider>
+      </ApiContextProvider>
     </AppWrapper>
   );
 }

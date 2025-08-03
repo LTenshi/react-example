@@ -1,6 +1,6 @@
 import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
 import FallbackSimple from '@/components/generic/FallbackSimple';
 //We could make a function that manually does that, but this is a widely accepted alternative to moment
@@ -11,6 +11,7 @@ import {
   MultiRenderingContext,
   useMultiRenderingContext,
 } from '@/contexts/MultiRenderingContext';
+import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
 
 export function ExampleBox(props: { exampleObject: ExampleObjectDTO }) {
   const dateAdded = format(props.exampleObject.dateAdded, 'dd/MM/yyyy');
@@ -84,12 +85,12 @@ export function ExampleContainer(props: { server: nestServerModule }) {
 }
 
 export default function MultiRenderingExample() {
-  const nestServer = useMemo(() => new nestServerModule(), []);
+  const { apiModule } = useApiContext() as ApiContext;
 
   return (
     <UiBox className="mt-2">
       <div className="p-2">
-        <ExampleContainer server={nestServer}></ExampleContainer>
+        <ExampleContainer server={apiModule}></ExampleContainer>
       </div>
     </UiBox>
   );

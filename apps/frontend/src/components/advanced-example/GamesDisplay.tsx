@@ -1,6 +1,5 @@
-import nestServerModule from '@/modules/nestServerModule';
 import UiBox from '@/components/generic/UiBox';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import FallbackSimple from '@/components/generic/FallbackSimple';
 import {
   DisplayReviewDTO,
@@ -16,16 +15,16 @@ import { getRating, PerformPatchOperation } from '@/scripts/helpers';
 import { SimpleModal } from '../generic/SimpleModal';
 import InputWrapper from '../generic/InputWrapper';
 import { JSONPatchObject } from '@/classes/JSONPatchObject';
+import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
+import nestServerModule from '@/modules/nestServerModule';
 
 export default function GamesDisplay() {
-  const nestServer = useMemo(() => {
-    return new nestServerModule();
-  }, []);
+  const { apiModule } = useApiContext() as ApiContext;
 
   return (
     <UiBox className="mt-2">
       <div className="p-2">
-        <GameBoxContainer server={nestServer}></GameBoxContainer>
+        <GameBoxContainer server={apiModule}></GameBoxContainer>
       </div>
     </UiBox>
   );

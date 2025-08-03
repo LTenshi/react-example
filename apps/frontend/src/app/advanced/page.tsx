@@ -3,6 +3,7 @@ import GamesDisplay from '@/components/advanced-example/GamesDisplay';
 import AppWrapper from '@/components/generic/AppWrapper';
 import UiBox from '@/components/generic/UiBox';
 import { AdvancedVideoGameContextProvider } from '@/contexts/AdvancedVideoGameContext';
+import { ApiContextProvider } from '@/contexts/ApiProviderContext';
 
 export default function Page() {
   return (
@@ -17,9 +18,11 @@ export default function Page() {
           </h6>
         </div>
       </UiBox>
-      <AdvancedVideoGameContextProvider>
-        <GamesDisplay />
-      </AdvancedVideoGameContextProvider>
+      <ApiContextProvider>
+        <AdvancedVideoGameContextProvider>
+          <GamesDisplay />
+        </AdvancedVideoGameContextProvider>
+      </ApiContextProvider>
     </AppWrapper>
   );
 }

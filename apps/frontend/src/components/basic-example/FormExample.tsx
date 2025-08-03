@@ -1,5 +1,4 @@
-import nestServerModule from '@/modules/nestServerModule';
-import { FormEvent, useMemo } from 'react';
+import { FormEvent } from 'react';
 import UiBox from '@/components/generic/UiBox';
 import InputWrapper from '@/components/generic/InputWrapper';
 import { ExampleObjectDTO } from '@/classes/ExampleObjectDTO';
@@ -7,11 +6,12 @@ import {
   MultiRenderingContext,
   useMultiRenderingContext,
 } from '@/contexts/MultiRenderingContext';
+import { ApiContext, useApiContext } from '@/contexts/ApiProviderContext';
 
 export default function FormExample() {
   const { setExampleList, setIsMultiLoading } =
     useMultiRenderingContext() as MultiRenderingContext;
-  const nestServer = useMemo(() => new nestServerModule(), []);
+  const { apiModule } = useApiContext() as ApiContext;
 
   async function handleFormSubmit(e: FormEvent) {
     e.preventDefault();
@@ -33,10 +33,10 @@ export default function FormExample() {
       new Date(formJson.dateAdded),
     );
 
-    const responseBool = await nestServer.postMovie(parsedFormJson);
+    const responseBool = await apiModule.postMovie(parsedFormJson);
     if (responseBool) {
       setIsMultiLoading(true);
-      setExampleList(await nestServer.getArrayObjectExample());
+      setExampleList(await apiModule.getArrayObjectExample());
       setIsMultiLoading(false);
     }
   }
